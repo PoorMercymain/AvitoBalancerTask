@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  grpcserver:
+    build: ./server/
+    environment:
+      - GRPC_PORT=${GRPC_PORT}
+  grpcclient:
+      build: ./client/
+      environment:
+        - API=${API}
+        - PORT=${INT_PORT}
+        - GRPC_PORT=${GRPC_PORT}
+      ports:
+        - ${PORT}:${INT_PORT}
